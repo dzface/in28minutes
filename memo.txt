@@ -1,0 +1,11 @@
+실행가능한 프로그램 jar 파일 만들기
+./gradlew build
+
+# 현재 자바17버전으로 컴퓨터 기본 설정 java버전이 호환되도록 설정하여야 함
+# 예 컴터 11 프로젝트 자바17이면 빌드 오류
+# 빌드후에 build/libs 폴더에 jar파일이 생성되어있음
+
+실행하기
+java -jar build/libs/in28min-0.0.1-SNAPSHOT.jar
+
+# URL 주소앞에 view-source: 붙이면 html만 나옴 ㅋㅋ
