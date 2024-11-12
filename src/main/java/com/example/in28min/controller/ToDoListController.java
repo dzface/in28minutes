@@ -18,6 +18,9 @@ import java.util.List;
 @SessionAttributes("name")
 public class ToDoListController {
     private TodoService todoService;
+    private String getLoggedInUserName(ModelMap model){
+        return (String)model.get("name");
+    }
     public ToDoListController(TodoService todoService) {
         this.todoService = todoService;
     }
@@ -29,7 +32,7 @@ public class ToDoListController {
     }
     @RequestMapping(value = "add-todo", method = RequestMethod.GET)
     public String showAddToDoItem(ModelMap model){
-        String userName = (String)model.get("name");
+        String userName = getLoggedInUserName(model);
         TodoEntity todoEntity = new TodoEntity(0, userName, "", LocalDate.now().plusMonths(1), false);
         model.put("todoEntity", todoEntity);
         return "addToDoJsp";
@@ -39,7 +42,7 @@ public class ToDoListController {
         if(result.hasErrors()){
             return "addToDoJsp";
         }
-        String userName = (String)model.get("name");
+        String userName = getLoggedInUserName(model);
         todoService.addToDoItem(userName, todoEntity.getDescription(), LocalDate.now().plusMonths(1), false);
         return "redirect:todo-list";
     }
@@ -61,7 +64,7 @@ public class ToDoListController {
         if(result.hasErrors()){
             return "addToDoJsp";
         }
-        String userName = (String)model.get("name");
+        String userName = getLoggedInUserName(model);
         todoEntity.setUserName(userName);
         todoService.updateToDoItem(todoEntity);
         return "redirect:todo-list";
