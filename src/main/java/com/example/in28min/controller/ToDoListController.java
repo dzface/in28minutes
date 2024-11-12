@@ -3,6 +3,8 @@ package com.example.in28min.controller;
 import com.example.in28min.entity.TodoEntity;
 import com.example.in28min.service.TodoService;
 import jakarta.validation.Valid;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -19,8 +21,11 @@ import java.util.List;
 public class ToDoListController {
     private TodoService todoService;
     private String getLoggedInUserName(ModelMap model){
-        return (String)model.get("name");
+        Authentication authentication =
+                SecurityContextHolder.getContext().getAuthentication();
+        return authentication.getName();
     }
+
     public ToDoListController(TodoService todoService) {
         this.todoService = todoService;
     }
@@ -69,4 +74,5 @@ public class ToDoListController {
         todoService.updateToDoItem(todoEntity);
         return "redirect:todo-list";
     }
+
 }

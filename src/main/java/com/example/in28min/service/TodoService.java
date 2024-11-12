@@ -20,7 +20,8 @@ public class TodoService {
         todoList.add(new TodoEntity(++CountList,"in28minutes","Learn Redis", LocalDate.now().plusMonths(3), false));
     }
     public List<TodoEntity> findByUserName(String userName){
-        Predicate<? super TodoEntity> predicate = todoEntity -> todoEntity.getUserName().equalsIgnoreCase(userName);
+        Predicate<? super TodoEntity> predicate =
+                todoEntity -> todoEntity.getUserName().equalsIgnoreCase(userName);
         return todoList.stream().filter(predicate).toList();
     }
     public void addToDoItem(String userName, String description, LocalDate targetDate, boolean done){
