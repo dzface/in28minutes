@@ -9,12 +9,17 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
+import java.util.function.Function;
+
 @Configuration
 public class SpringSecurityConfiguration {
 
     @Bean
     public InMemoryUserDetailsManager createUserDetailsMaager(){
-        UserDetails userDetails = User.withDefaultPasswordEncoder()
+        Function<String, String> passwordEncoder =
+                input->passwordEncoder().encode(input);
+        UserDetails userDetails = User.builder()
+                .passwordEncoder(passwordEncoder)
                 .username("in28minutes")
                 .password("dummy")
                 .roles("USER","ADMIN")
