@@ -14,7 +14,6 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>id</th>
                         <th>description</th>
                         <th>target date</th>
                         <th>done</th>
@@ -24,10 +23,11 @@
                 <tbody>
                     <c:forEach items="${list}" var = "item">
                     <tr>
-                    <td>${item.id}</td>
-                    <td>${item.description}</td>
-                    <td>${item.targetDate}</td>
-                    <td>${item.done}</td>
+                        <td>${item.description}</td>
+                        <td>${item.targetDate}</td>
+                        <td>${item.done}</td>
+                        <td><a href="update-todo?id=${item.id}" class="btn btn-Info">Edit</a></td>
+                        <td><a href="delete-todo?id=${item.id}" class="btn btn-warning">Del</a></td>
                     </tr>
                     </c:forEach>
                 </tbody>
