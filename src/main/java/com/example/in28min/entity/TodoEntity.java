@@ -6,7 +6,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Size;
 
-import java.beans.ConstructorProperties;
 import java.time.LocalDate;
 
 @Entity
@@ -18,16 +17,11 @@ public class TodoEntity {
     private String description;
     private LocalDate targetDate;
     private boolean done;
-    //예제랑 다르게
 
-    @ConstructorProperties({"id","userName","description","targetDate","done"})
-    //예제랑 다르게 @ConstructorProperties를 추가해야함
-    public TodoEntity(int id, String userName, String description, LocalDate targetDate, boolean done) {
-        this.id = id;
-        this.userName = userName;
-        this.description = description;
-        this.targetDate = targetDate;
-        this.done = done;
+    public TodoEntity() {
+    }
+
+    public TodoEntity(int i, String userName, String description, LocalDate targetDate, boolean done) {
     }
 
     public int getId() {
@@ -38,8 +32,8 @@ public class TodoEntity {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUserName(String userName) {
+        return this.userName;
     }
 
     public void setUserName(String userName) {
@@ -69,6 +63,8 @@ public class TodoEntity {
     public void setDone(boolean done) {
         this.done = done;
     }
+
+
 
     @Override
     public String toString() {
