@@ -1,11 +1,13 @@
-create table course(
-    id bigint not null,
-    name varchar(255) not null,
-    author varchar(255) not null,
-    primary key (id)
-);
+INSERT INTO TODO_ENTITY (ID, USER_NAME, DESCRIPTION, TARGET_DATE, DONE)
+VALUES (1, 'in28minutes', 'Learn Deep Learning', CURRENT_DATE(), false);
+
+INSERT INTO TODO_ENTITY (ID, USER_NAME, DESCRIPTION, TARGET_DATE, DONE)
+VALUES (2, 'in28minutes', 'Learn LINUX', CURRENT_DATE(), false);
+
+INSERT INTO TODO_ENTITY (ID, USER_NAME, DESCRIPTION, TARGET_DATE, DONE)
+VALUES (3, 'in28minutes', 'Learn FASTAPI', CURRENT_DATE(), false);
+
+INSERT INTO TODO_ENTITY (ID, USER_NAME, DESCRIPTION, TARGET_DATE, DONE)
+VALUES (4, 'in28minutes', 'Learn NODE.JS', CURRENT_DATE(), false);
 
 
-
---select * from course
---delete  from course where id =1;

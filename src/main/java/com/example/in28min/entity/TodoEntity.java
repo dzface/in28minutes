@@ -1,11 +1,17 @@
 package com.example.in28min.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Size;
 
 import java.beans.ConstructorProperties;
 import java.time.LocalDate;
 
+@Entity
 public class TodoEntity {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String userName;
     @Size(min = 5, message = "type over than 5 character")
